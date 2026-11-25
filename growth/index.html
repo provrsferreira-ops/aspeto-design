@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aspeto Growth · Pack Casa Cheia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confident, futuristic, generous: an offer too good to refuse
+   IDEA: an AI scanning instrument passing over a listing photo and fixing it live
+   PICTURE: real property photos under a glowing scan beam, HUD brackets and readouts
+   COLOUR and TYPE: near-black glass, electric blue to cyan light, warm sun-yellow badges; Unbounded + Manrope
+   LAYOUT: hero scan, the search feed, results, value stack, ROI, guarantee, free score, order desk, FAQ */
+:root{color-scheme:dark;--bg:#05070d;--bg2:#0a0f1c;--ink:#eef3ff;--mute:#9aa7c2;--line:rgba(255,255,255,.1);--glass:rgba(255,255,255,.045);
+--blue:#4d7cff;--cyan:#5ce1ff;--sun:#ffc23d;--sun-ink:#1a1405;--ok:#46e39a;--warn:#ffb547;--err:#ff6b6b}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(900px 500px at 85% -10%,rgba(77,124,255,.22),transparent 60%),
+ radial-gradient(700px 400px at -10% 30%,rgba(92,225,255,.10),transparent 60%),
+ linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/56px 56px,
+ linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/56px 56px,var(--bg)}
+h1,h2,h3{font-family:Unbounded,system-ui,sans-serif;font-weight:600;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,4.6vw,52px)}h2{font-size:clamp(24px,3.2vw,38px)}h3{font-size:18px;line-height:1.3;letter-spacing:-.01em}
+p{margin:0}a{color:inherit}ul,ol{margin:0;padding:0;list-style:none}
+.wrap{max-width:1200px;margin:0 auto}
+.band{padding:clamp(56px,7vw,110px) max(5vw,16px)}
+.lead{font-size:17.5px;color:var(--mute);max-width:62ch}
+.small{font-size:13.5px;color:var(--mute)}
+.hl{background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(14px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+ background:linear-gradient(90deg,var(--blue),#3fb8ff);color:#fff;font:800 16px Manrope,sans-serif;text-decoration:none;white-space:nowrap;
+ box-shadow:0 0 0 1px rgba(255,255,255,.15) inset,0 10px 40px -8px rgba(77,124,255,.75)}
+.btn:hover{filter:brightness(1.1)}.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;background:var(--glass);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:15px;cursor:pointer}
+.chip:hover{border-color:rgba(92,225,255,.5)}.chip svg{color:var(--cyan)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid rgba(92,225,255,.35);background:rgba(92,225,255,.08);font-size:13.5px;font-weight:700;color:#cfefff}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+/* nav */
+.top{position:sticky;top:0;z-index:30;background:rgba(5,7,13,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;gap:22px;padding:12px max(5vw,16px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;font:600 17px Unbounded,sans-serif}
+.logo svg{color:var(--cyan)}
+.nav{display:flex;gap:24px;font-weight:600;font-size:15px;color:#c9d3ea}.nav a{text-decoration:none}.nav a:hover{color:#fff}
+.top .btn{min-height:44px;padding:0 18px;font-size:15px}
+@media(max-width:900px){.nav{display:none}}
+@media(max-width:420px){.logo span{display:none}}
+/* hero */
+.hero{position:relative;padding-bottom:40px}
+.hero-bg{position:absolute;inset:0 0 auto 0;height:640px;z-index:-1;background:url(img/hero.jpg) center/cover;opacity:.22;-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent)}
+.hero-t{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 56px;align-items:end}
+.hero-t h1{margin-top:18px}.hero-t .lead{margin-top:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center}
+.trust{display:grid;gap:14px}
+.trust li{display:flex;gap:12px;align-items:center;font-weight:700}
+.trust b{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;background:rgba(77,124,255,.14);border:1px solid rgba(77,124,255,.35);color:var(--cyan)}
+@media(max-width:860px){.hero-t{grid-template-columns:1fr}}
+/* scan compare */
+.scan{position:relative;margin-top:44px;border-radius:24px;padding:10px;background:linear-gradient(180deg,rgba(92,225,255,.25),rgba(77,124,255,.06));box-shadow:0 40px 120px -40px rgba(77,124,255,.6)}
+.cmp{position:relative;aspect-ratio:3/2;border-radius:18px;overflow:hidden;background:#111;--p:50%}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.cmp .bf{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.cmp .beam{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;background:#fff;pointer-events:none;box-shadow:0 0 18px 4px rgba(92,225,255,.9),0 0 60px 10px rgba(77,124,255,.55)}
+.cmp .beam::after{content:"";position:absolute;top:0;bottom:0;left:-80px;width:80px;background:linear-gradient(90deg,transparent,rgba(92,225,255,.18))}
+.knob{position:absolute;top:50%;left:50%;width:50px;height:50px;margin:-25px;border-radius:50%;background:rgba(5,7,13,.65);border:1.5px solid var(--cyan);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);box-shadow:0 0 24px rgba(92,225,255,.6)}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.cmp:has(input:focus-visible){outline:3px solid var(--cyan);outline-offset:4px}
+.tag{position:absolute;top:14px;padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:800;pointer-events:none;backdrop-filter:blur(8px)}
+.tag.l{left:14px;background:rgba(5,7,13,.6);border:1px solid var(--line)}.tag.r{right:14px;background:rgba(77,124,255,.85)}
+.hud{position:absolute;inset:18px;pointer-events:none}
+.hud i{position:absolute;width:26px;height:26px;border:2px solid rgba(92,225,255,.85)}
+.hud i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}.hud i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}
+.hud i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}.hud i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+.reads{position:absolute;right:22px;bottom:22px;display:grid;gap:8px;justify-items:end;pointer-events:none}
+.reads span{padding:6px 12px;border-radius:10px;background:rgba(5,7,13,.7);border:1px solid rgba(92,225,255,.4);font-size:13px;font-weight:700;backdrop-filter:blur(8px);opacity:0;transform:translateY(6px);transition:.35s}
+.reads span.on{opacity:1;transform:none}.reads span b{color:var(--ok)}
+@media(max-width:600px){.reads{display:none}.hud{inset:10px}.hud i{width:16px;height:16px}}
+/* serp */
+.toggle{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--glass);border:1px solid var(--line);margin-top:24px}
+.toggle button{min-height:42px;padding:0 18px;border-radius:999px;border:0;background:none;color:var(--ink);font:700 14.5px Manrope,sans-serif;cursor:pointer}
+.toggle button[aria-pressed=true]{background:linear-gradient(90deg,var(--blue),#3fb8ff);color:#fff}
+.verdict{margin-top:16px;font-weight:700;min-height:3.2em;max-width:70ch}
+.serp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:20px}
+.lst{margin:0}.lst .ph{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#111}
+.lst img{width:100%;height:100%;object-fit:cover;display:block}
+.lst.you .ph{outline:2px solid var(--sun);outline-offset:4px}
+.lst .yt{position:absolute;left:10px;top:10px;padding:4px 10px;border-radius:999px;background:var(--sun);color:var(--sun-ink);font-size:12px;font-weight:800}
+.lst figcaption{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;padding-top:10px;font-size:14px}
+.lst figcaption b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lst figcaption span{color:var(--mute)}.lst .pr{font-weight:800;text-align:right;white-space:nowrap}
+@media(max-width:820px){.serp{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+@media(max-width:480px){.lst figcaption{grid-template-columns:1fr;font-size:13px}.lst .pr{text-align:left}.lst figcaption b{white-space:normal;font-size:14px}}
+/* carousel */
+.car{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;position:relative;margin-top:30px}
+.car::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;margin:0}
+.slide figcaption{display:flex;flex-wrap:wrap;gap:4px 12px;padding:14px 4px 0;color:var(--mute)}.slide figcaption b{color:var(--ink)}
+.carnav{display:flex;align-items:center;gap:10px;margin-top:14px}
+.dots{display:flex;margin-right:auto}
+.dots button{width:40px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25)}
+.dots [aria-current=true] i{width:26px;border-radius:6px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.arr{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:#fff;cursor:pointer;display:grid;place-items:center}
+/* stack */
+.stack{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;margin-top:36px;align-items:start}
+@media(max-width:940px){.stack{grid-template-columns:1fr}}
+.items{padding:8px 24px}
+.it{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.it:last-child{border:0}
+.it .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font:600 15px Unbounded,sans-serif;background:rgba(77,124,255,.14);border:1px solid rgba(77,124,255,.35);color:var(--cyan)}
+.it.bonus .n{background:rgba(255,194,61,.12);border-color:rgba(255,194,61,.4);color:var(--sun)}
+.it p{color:var(--mute);font-size:15px;margin-top:4px}
+.it .v{font-weight:800;white-space:nowrap;color:#c9d3ea;text-align:right}
+.it .v small{display:block;font-size:11.5px;font-weight:700;color:var(--mute)}
+.sub{font:600 13px Manrope,sans-serif;color:var(--sun);padding-top:18px}
+@media(max-width:520px){.items{padding:4px 16px}.it{grid-template-columns:36px minmax(0,1fr)}.it .n{width:36px;height:36px;font-size:13px}.it .v{grid-column:2;text-align:left}.it .v small{display:inline;margin-right:6px}}
+.offer{position:sticky;top:90px;padding:30px;background:linear-gradient(180deg,rgba(77,124,255,.16),rgba(255,255,255,.03));border:1px solid rgba(92,225,255,.35);border-radius:24px;box-shadow:0 30px 90px -40px rgba(77,124,255,.8)}
+.offer .was{color:var(--mute);font-weight:700}.offer .was s{color:#c9d3ea}
+.price{font:700 clamp(56px,8vw,84px)/1 Unbounded,sans-serif;margin:10px 0 6px;letter-spacing:-.04em}
+.offer ul{display:grid;gap:10px;margin:22px 0}
+.offer li{display:flex;gap:10px;font-weight:600;font-size:15px}.offer li svg{flex:none;color:var(--ok);margin-top:3px}
+.offer .btn{width:100%}
+.seats{margin-top:20px}.seats .bar{height:8px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:8px}
+.seats .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sun),#ff8a3d);border-radius:6px}
+/* roi */
+.roi{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:34px}
+@media(max-width:860px){.roi{grid-template-columns:1fr}}
+.roi .glass{padding:28px}
+.f{display:grid;gap:6px;margin-bottom:18px}.f span{font-weight:700;font-size:15px}
+.f .row{display:flex;gap:14px;align-items:center}
+input[type=range].r{flex:1;accent-color:var(--blue);height:44px}
+.f output{min-width:5.5em;text-align:right;font-weight:800;font-size:17px;white-space:nowrap}
+.out{display:grid;gap:16px;align-content:center}
+.big{font:700 clamp(44px,6vw,64px)/1 Unbounded,sans-serif;letter-spacing:-.03em}
+.out .row2{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-weight:600}
+.out .row2 b{white-space:nowrap}
+/* guarantee */
+.gua{display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;padding:clamp(24px,4vw,48px)}
+.seal{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;text-align:center;border:2px solid var(--sun);box-shadow:0 0 0 8px rgba(255,194,61,.08),0 0 60px rgba(255,194,61,.3);font:700 15px/1.25 Unbounded,sans-serif;color:var(--sun);padding:20px}
+.seal b{display:block;font-size:40px;line-height:1}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.g2 div{padding:18px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.g2 p{color:var(--mute);font-size:15px;margin-top:6px}
+@media(max-width:760px){.gua{grid-template-columns:1fr;justify-items:start}.g2{grid-template-columns:1fr}.seal{width:140px;height:140px}}
+/* steps */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}
+.how li{padding:26px}.how b{font:700 15px Unbounded,sans-serif;color:var(--cyan)}.how h3{margin:12px 0 8px}.how p{color:var(--mute)}
+@media(max-width:820px){.how{grid-template-columns:1fr}}
+/* score */
+.anl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
+@media(max-width:860px){.anl{grid-template-columns:1fr}}
+.drop{position:relative;display:grid;place-items:center;text-align:center;gap:8px;min-height:180px;padding:26px;border:1.5px dashed rgba(92,225,255,.4);border-radius:18px;cursor:pointer;background:rgba(92,225,255,.04);transition:.2s}
+.drop:hover,.drop.on{background:rgba(92,225,255,.1);border-color:var(--cyan)}
+.drop b{font-size:17px}.drop svg{color:var(--cyan)}
+.drop input{position:absolute;width:1px;height:1px;opacity:0}
+.res{padding:26px}
+.sc{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.ring{--v:0;width:148px;height:148px;border-radius:50%;background:conic-gradient(var(--c,var(--blue)) calc(var(--v)*1%),rgba(255,255,255,.08) 0);display:grid;place-items:center;flex:none;box-shadow:0 0 40px -10px var(--c,var(--blue))}
+.ring b{width:118px;height:118px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;align-content:center;font:700 40px/1 Unbounded,sans-serif}
+.ring b small{display:block;font:700 12px Manrope,sans-serif;color:var(--mute);margin-top:4px}
+.meters{display:grid;gap:10px;flex:1;min-width:200px}
+.m{display:grid;grid-template-columns:6.2em minmax(0,1fr) 2.4em;gap:10px;align-items:center;font-size:14px;font-weight:700}
+.m .t{height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}.m .t i{display:block;height:100%;border-radius:6px}
+.m>span:last-child{text-align:right}
+.issues{display:grid;gap:8px;margin-top:18px}
+.issues li{display:flex;gap:10px;font-size:15px}.issues li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;margin-top:8px;background:var(--c,var(--err));box-shadow:0 0 8px var(--c,var(--err))}
+.empty{color:var(--mute);text-align:center;padding:24px 8px}
+/* order */
+.app{padding:clamp(18px,3vw,36px);margin-top:30px}
+.stepper{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.stepper li{padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--mute)}
+.stepper li[aria-current=step]{background:rgba(77,124,255,.25);border-color:var(--blue);color:#fff}.stepper li.done{color:var(--ok)}
+.view[hidden]{display:none}
+.ord{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+@media(max-width:900px){.ord{grid-template-columns:1fr}}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+@media(max-width:560px){.fields{grid-template-columns:1fr}}
+.fld{display:grid;gap:6px}.fld.full{grid-column:1/-1}.fld span{font-weight:700;font-size:14.5px}
+.fld input{min-height:50px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font:16px Manrope,sans-serif;background:rgba(255,255,255,.04);color:var(--ink);width:100%}
+.fld input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(92,225,255,.2)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;margin-top:14px}
+.thumbs li{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs .ph{display:grid;place-items:center;height:100%;padding:6px;font-size:12px;text-align:center;color:var(--mute);overflow-wrap:anywhere}
+.thumbs button{position:absolute;top:4px;right:4px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(5,7,13,.8);color:#fff;cursor:pointer;font-size:18px}
+.msg{margin-top:10px;font-size:14px;color:var(--err)}.msg:empty{display:none}
+.side{padding:24px;display:grid;gap:16px;border-radius:20px;background:rgba(77,124,255,.08);border:1px solid rgba(92,225,255,.3)}
+.opt{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;border:1px solid var(--line);cursor:pointer;background:rgba(255,255,255,.03)}
+.opt:has(input:checked){border-color:var(--cyan);background:rgba(92,225,255,.08)}
+.opt input{accent-color:var(--cyan);width:20px;height:20px}
+.opt b{display:block}.opt small{color:var(--mute)}
+.opt .amt{margin-left:auto;font:700 17px Unbounded,sans-serif;white-space:nowrap}
+.side .btn{width:100%}
+.prog{max-width:640px;margin:0 auto;text-align:center;padding:10px 0}
+.pbar{height:14px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;margin:26px 0 10px;border:1px solid var(--line)}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 20px var(--cyan)}
+.pct{font:700 40px Unbounded,sans-serif}
+.psteps{display:grid;gap:10px;text-align:left;margin:24px auto 0;max-width:430px}
+.psteps li{display:flex;gap:10px;align-items:center;color:var(--mute);font-weight:700}
+.psteps li i{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;font-style:normal;font-size:12px}
+.psteps li.act{color:var(--ink)}.psteps li.act i{border-color:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.psteps li.ok{color:var(--ink)}.psteps li.ok i{background:var(--ok);border-color:var(--ok);color:#05070d}
+.mini{display:flex;justify-content:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+.mini img{width:62px;height:62px;object-fit:cover;border-radius:10px;transition:filter .6s}
+.pay{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start}
+@media(max-width:900px){.pay{grid-template-columns:1fr}}
+.rows div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.rows div span:last-child{font-weight:800;text-align:right;overflow-wrap:anywhere}
+.rows .tot{border:0;font-size:20px}
+.demo{font-size:13px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);color:var(--mute)}
+.link{background:none;border:0;color:var(--mute);font:700 15px Manrope,sans-serif;cursor:pointer;text-decoration:underline;min-height:44px}
+/* faq + final */
+.faq{max-width:860px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:800;font-size:17px;min-height:60px;display:flex;align-items:center;gap:12px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font:600 22px Unbounded,sans-serif;color:var(--cyan)}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);padding:0 0 18px}
+.final{text-align:center;position:relative;overflow:hidden}
+.final .bgimg{position:absolute;inset:0;background:url(img/hero.jpg) center/cover;opacity:.28;z-index:-1;-webkit-mask-image:radial-gradient(closest-side,#000,transparent);mask-image:radial-gradient(closest-side,#000,transparent)}
+.final .lead{margin:16px auto 0}.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:center}
+/* thanks */
+#ty{display:none;min-height:80vh}
+body.ty .pg{display:none}body.ty #ty{display:block}
+.tyc{max-width:720px;margin:0 auto;text-align:center}
+.tick{width:92px;height:92px;border-radius:50%;margin:0 auto 26px;display:grid;place-items:center;background:rgba(70,227,154,.12);border:2px solid var(--ok);color:var(--ok);box-shadow:0 0 50px rgba(70,227,154,.35)}
+.tyc .lead{margin:16px auto 0}
+.tl{margin-top:30px;text-align:left;padding:24px;display:grid;gap:14px}
+.tl li{display:grid;grid-template-columns:7em minmax(0,1fr);gap:12px}.tl li b{color:var(--cyan)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-5h6v5"/></svg><span>Aspeto Growth</span></a>
+  <nav class="nav pg"><a href="#resultados">Resultados</a><a href="#pack">O pack</a><a href="#garantia">Garantia</a><a href="#nota">Nota grátis</a><a href="#faq">Perguntas</a></nav>
+  <a class="btn pg" href="#comprar">Quero o pack</a>
+</div></header>
+
+<main>
+<section class="band hero pg">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-t">
+      <div>
+        <span class="pill"><i></i>Para alojamento local, guesthouses e pequenos hotéis</span>
+        <h1>Transformamos o seu alojamento no anúncio mais desejado da zona.</h1>
+        <p class="lead">Fotos de nível profissional, anúncio reescrito e o seu próprio site de reservas diretas. Feito por nós em 7 dias. Do seu lado, são 10 minutos.</p>
+        <div class="cta">
+          <a class="btn" href="#comprar">Quero o Pack Casa Cheia · 500 €</a>
+          <a class="chip" href="#nota"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.3l6-.7z"/></svg>Dar nota à minha foto, grátis</a>
+        </div>
+      </div>
+      <ul class="trust">
+        <li><b>7</b>Tudo pronto em 7 dias, fotos em 48 horas</li>
+        <li><b>60</b>Garantia de 60 dias ou devolvemos tudo</li>
+        <li><b>20</b>Só 20 alojamentos por mês</li>
+        <li><b>9</b>9 entregas num só pack</li>
+      </ul>
+    </div>
+    <div class="scan">
+      <div class="cmp" id="heroCmp">
+        <img src="img/sala.jpg" alt="Sala depois da edição: luz natural, vista da Ria nítida e cores reais">
+        <div class="bf"><img src="img/sala-antes.jpg" alt="Sala antes: escura, amarelada e torta"></div>
+        <span class="tag l">Antes</span><span class="tag r">Depois</span>
+        <div class="hud"><i></i><i></i><i></i><i></i></div>
+        <div class="reads" id="reads"><span>Luz <b>+41</b></span><span>Cor real <b>✓</b></span><span>Verticais <b>0°</b></span><span>Vista recuperada <b>✓</b></span></div>
+        <div class="beam"><span class="knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da sala">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band pg" id="pesquisa">
+  <div class="wrap">
+    <h2>O hóspede escolhe em segundos. <span class="hl">Pela foto.</span></h2>
+    <p class="lead" style="margin-top:14px">No Airbnb e no Booking, o seu anúncio aparece ao lado de dezenas de outros. Se a sua capa for a mais escura, o hóspede nem chega a ler o preço.</p>
+    <div class="toggle" role="group" aria-label="Foto do seu anúncio"><button id="tgB" aria-pressed="true">A sua foto de hoje</button><button id="tgA" aria-pressed="false">Depois da Aspeto</button></div>
+    <p class="verdict" id="verdict"></p>
+    <div class="serp" id="serp"></div>
+    <p class="small" style="margin-top:14px">Exemplo ilustrativo de uma página de resultados, com imagens de exemplo.</p>
+  </div>
+</section>
+
+<section class="band pg" id="resultados" style="padding-top:0">
+  <div class="wrap">
+    <h2>Arraste e veja a diferença</h2>
+    <p class="lead" style="margin-top:14px">Luz, cor, janelas com vista, céu azul e linhas direitas. A mesma casa, mas como ela é na realidade.</p>
+    <div class="car" id="car"></div>
+    <div class="carnav"><div class="dots" id="dots"></div>
+      <button class="arr" id="prev" aria-label="Exemplo anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="arr" id="next" aria-label="Exemplo seguinte"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    <p class="small" style="margin-top:6px">Imagens de exemplo.</p>
+  </div>
+</section>
+
+<section class="band pg" id="pack" style="padding-top:0">
+  <div class="wrap">
+    <h2>Tudo o que recebe no Pack Casa Cheia</h2>
+    <p class="lead" style="margin-top:14px">Não vendemos só fotos. Entregamos tudo o que um alojamento precisa para ser escolhido, reservar mais e depender menos das plataformas.</p>
+    <div class="stack">
+      <div class="glass items" id="items"></div>
+      <aside class="offer">
+        <p class="was">Valor de tudo em separado: <s id="sumVal"></s></p>
+        <div class="price">500 €</div>
+        <p class="small">Pagamento único, ou 2 × 250 €. Sem mensalidades.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Fotos prontas em 48 horas</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Pack completo em 7 dias</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Garantia de 60 dias ou devolvemos tudo</li>
+        </ul>
+        <a class="btn" href="#comprar">Quero o Pack Casa Cheia</a>
+        <div class="seats"><p class="small"><b id="seatTxt" style="color:var(--ink)"></b></p><div class="bar"><i id="seatBar"></i></div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band pg" id="contas" style="padding-top:0">
+  <div class="wrap">
+    <h2>O pack paga-se sozinho</h2>
+    <p class="lead" style="margin-top:14px">Ponha os números do seu alojamento e veja quantas reservas são precisas para recuperar os 500 €.</p>
+    <div class="roi">
+      <div class="glass">
+        <label class="f"><span>Preço médio por noite</span><div class="row"><input class="r" type="range" id="rPrice" min="30" max="400" step="5" value="90"><output id="oPrice"></output></div></label>
+        <label class="f"><span>Noites por reserva</span><div class="row"><input class="r" type="range" id="rNights" min="1" max="10" value="3"><output id="oNights"></output></div></label>
+        <label class="f" style="margin:0"><span>Comissão que paga às plataformas</span><div class="row"><input class="r" type="range" id="rCom" min="0" max="25" value="15"><output id="oCom"></output></div></label>
+      </div>
+      <div class="glass out">
+        <div><p class="small">O pack paga-se com</p><div class="big hl" id="oNeed"></div></div>
+        <div class="row2"><span>Valor de uma reserva</span><b id="oBook"></b></div>
+        <div class="row2"><span>Se ganhar 1 reserva extra por mês, num ano</span><b id="oYear"></b></div>
+        <div class="row2"><span>Comissão poupada em cada reserva direta</span><b id="oSave"></b></div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:12px">Simulação com os seus números. Não é uma promessa de reservas.</p>
+  </div>
+</section>
+
+<section class="band pg" id="garantia" style="padding-top:0">
+  <div class="wrap glass gua">
+    <div class="seal"><span><b>60</b>dias de garantia</span></div>
+    <div>
+      <h2>O risco é todo nosso.</h2>
+      <p class="lead" style="margin-top:12px">Ou o seu anúncio fica melhor, ou não paga. Simples.</p>
+      <div class="g2">
+        <div><h3>Adora as fotos, ou refazemos</h3><p>Se alguma foto não ficar como imaginou, refazemos até adorar. Sem limite de pedidos.</p></div>
+        <div><h3>Mais visualizações, ou devolvemos 500 €</h3><p>Use as fotos e o texto novos. Se em 60 dias as visualizações do seu anúncio não subirem face aos 60 dias anteriores, devolvemos tudo. E fica com o trabalho.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band pg" style="padding-top:0">
+  <div class="wrap">
+    <h2>Do seu lado são 10 minutos</h2>
+    <ol class="how">
+      <li class="glass"><b>Hoje</b><h3>Escolhe o pack e envia as fotos</h3><p>As fotos que já tem e o link do anúncio. Pode ser do telemóvel.</p></li>
+      <li class="glass"><b>48 horas</b><h3>Recebe as fotos novas</h3><p>Prontas a carregar no Airbnb, no Booking e no Google.</p></li>
+      <li class="glass"><b>7 dias</b><h3>Recebe o resto do pack</h3><p>Anúncio reescrito, site de reservas, ficha do Google, kit Instagram e cartão de avaliações.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band pg" id="nota" style="padding-top:0">
+  <div class="wrap anl">
+    <div>
+      <span class="pill"><i></i>Grátis, sem registo</span>
+      <h2 style="margin-top:16px">Que nota tem a sua foto de capa?</h2>
+      <p class="lead" style="margin-top:14px">Carregue a foto principal do seu anúncio. Medimos luz, contraste, cor, tom e nitidez em segundos e dizemos o que está a afastar hóspedes.</p>
+      <label class="drop" id="adrop" style="margin-top:22px">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <b>Escolher a foto de capa</b>
+        <span class="small">A análise é feita no seu navegador. A foto não sai do seu aparelho.</span>
+        <input type="file" id="afile" accept="image/*">
+      </label>
+    </div>
+    <div class="glass res" id="ares" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band pg" id="comprar" style="padding-top:0">
+  <div class="wrap">
+    <h2>Reserve a sua vaga</h2>
+    <p class="lead" style="margin-top:14px">Preencha, envie as fotos e pague. Começamos no próprio dia.</p>
+    <div class="glass app">
+      <ol class="stepper" id="stepper"><li data-s="sel" aria-current="step">1 · Dados e fotos</li><li data-s="prog">2 · Análise</li><li data-s="pay">3 · Pagamento</li></ol>
+
+      <form class="view ord" id="v-sel" novalidate>
+        <div>
+          <div class="fields">
+            <label class="fld"><span>Nome do alojamento</span><input id="fName" autocomplete="organization" placeholder="Casa da Ria"></label>
+            <label class="fld"><span>Link do anúncio</span><input id="fLink" type="url" inputmode="url" placeholder="airbnb.pt/rooms/…"></label>
+            <label class="fld"><span>Email</span><input id="fEmail" type="email" autocomplete="email" placeholder="nome@exemplo.pt"></label>
+            <label class="fld"><span>WhatsApp</span><input id="fTel" type="tel" autocomplete="tel" placeholder="+351 912 345 678"></label>
+          </div>
+          <label class="drop" id="drop">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+            <b>Arraste as fotos do anúncio ou toque para escolher</b>
+            <span class="small">Até 40 fotos · JPG, PNG ou HEIC · até 10 MB cada</span>
+            <input type="file" id="file" accept="image/*,.heic,.heif" multiple>
+          </label>
+          <p class="msg" id="fmsg" role="alert"></p>
+          <ul class="thumbs" id="thumbs"></ul>
+        </div>
+        <div class="side">
+          <h3>Pack Casa Cheia</h3>
+          <label class="opt"><input type="radio" name="plan" value="full" checked><span><b>Pagamento único</b><small>A opção mais simples</small></span><span class="amt">500 €</span></label>
+          <label class="opt"><input type="radio" name="plan" value="split"><span><b>2 prestações</b><small>250 € hoje, 250 € em 30 dias</small></span><span class="amt">2 × 250 €</span></label>
+          <p class="small" id="cnt">Ainda não escolheu fotos.</p>
+          <p class="msg" id="emsg" role="alert"></p>
+          <button class="btn" id="go" type="submit" disabled>Analisar e continuar</button>
+          <p class="small">Só paga no passo seguinte. Garantia de 60 dias.</p>
+        </div>
+      </form>
+
+      <div class="view prog" id="v-prog" hidden>
+        <h3>A analisar o seu alojamento</h3>
+        <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pbar"><i id="pfill"></i></div>
+        <div class="pct" id="pct">0%</div>
+        <ul class="psteps" id="psteps"><li><i></i>A receber as suas fotos</li><li><i></i>A medir luz, contraste, cor e nitidez</li><li><i></i>A escolher a sua melhor capa</li><li><i></i>A preparar o seu plano</li></ul>
+        <div class="mini" id="mini"></div>
+        <div id="perr" hidden style="margin-top:22px"><p class="msg">Não foi possível enviar as fotos. Verifique a ligação e tente de novo, ou escreva para hello.aspeto@gmail.com.</p><div class="cta" style="justify-content:center"><button class="btn" id="retry" type="button">Tentar outra vez</button><button class="link" id="back2" type="button">Voltar</button></div></div>
+      </div>
+
+      <div class="view pay" id="v-pay" hidden>
+        <div>
+          <h3 id="pTitle">Diagnóstico das suas fotos</h3>
+          <div id="pscore" style="margin-top:18px"></div>
+        </div>
+        <div class="side">
+          <div class="rows" id="rows"></div>
+          <a class="btn" id="paybtn" href="#obrigado">Pagar com segurança</a>
+          <p class="small">Pagamento processado pela Stripe. Recebe o recibo por email.</p>
+          <p class="demo" id="demo" hidden>Modo demonstração: o botão abre a página de agradecimento. Os pagamentos reais ficam ativos quando os links da Stripe forem ligados.</p>
+          <button class="link" id="back" type="button">Voltar e alterar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band pg" id="faq" style="padding-top:0">
+  <div class="wrap faq">
+    <h2>Perguntas frequentes</h2>
+    <div style="margin-top:20px">
+      <details><summary>As minhas fotos são de telemóvel. Serve?</summary><p>Serve. A maioria dos alojamentos que tratamos tem fotos de telemóvel. Se alguma divisão não tiver foto aproveitável, dizemos exatamente como a tirar, com o guia incluído no pack.</p></details>
+      <details><summary>Alteram o espaço nas fotos?</summary><p>Não. Não acrescentamos móveis, não mudamos paredes nem escondemos defeitos. O hóspede encontra exatamente o que viu. É isso que mantém as avaliações altas.</p></details>
+      <details><summary>O site de reservas tem mensalidade?</summary><p>Não. O site fica alojado sem mensalidade. Só paga o domínio com o nome do seu alojamento, diretamente e em seu nome, se quiser ter um.</p></details>
+      <details><summary>Como funciona a garantia de 60 dias?</summary><p>Depois de pôr as fotos e o texto novos no anúncio, comparamos as visualizações dos 60 dias seguintes com as dos 60 dias anteriores, nas estatísticas da própria plataforma. Se não subirem, devolvemos os 500 € e fica com todo o trabalho.</p></details>
+      <details><summary>Porque é que só aceitam 20 alojamentos por mês?</summary><p>Cada alojamento é tratado à mão pela nossa designer, do primeiro ao último detalhe. Para manter essa qualidade, não passamos dos 20 por mês.</p></details>
+      <details><summary>Posso pagar em duas vezes?</summary><p>Pode. 250 € quando reserva a vaga e 250 € 30 dias depois.</p></details>
+      <details><summary>Tenho vários alojamentos ou uma imobiliária.</summary><p>Temos condições para gestores com várias casas e um plano mensal para imobiliárias, com as fotos de todos os novos imóveis. Escreva para hello.aspeto@gmail.com.</p></details>
+      <details><summary>O que acontece às minhas fotos?</summary><p>São usadas apenas para o seu pack. Não as publicamos nem partilhamos sem autorização.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band final pg">
+  <div class="bgimg"></div>
+  <div class="wrap">
+    <h2>Daqui a 7 dias, o seu anúncio pode ser o mais bonito da zona.</h2>
+    <p class="lead">Ou pode continuar igual ao de hoje. A garantia de 60 dias tira-lhe o risco. Só falta escolher.</p>
+    <div class="cta"><a class="btn" href="#comprar">Quero o Pack Casa Cheia · 500 €</a><a class="chip" href="#nota">Primeiro, dar nota à minha foto</a></div>
+    <p class="small" id="seatTxt2" style="margin-top:18px"></p>
+  </div>
+</section>
+
+<section class="band" id="ty">
+  <div class="tyc">
+    <div class="tick"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></div>
+    <h1>Bem-vindo ao Pack Casa Cheia.</h1>
+    <p class="lead" id="tyText">A sua vaga está reservada. Já estamos a trabalhar no seu alojamento.</p>
+    <p class="small" id="tyRef" style="margin-top:10px"></p>
+    <ol class="glass tl">
+      <li><b>Hoje</b><span>Recebe um email de confirmação e uma mensagem nossa no WhatsApp.</span></li>
+      <li><b>48 horas</b><span>As fotos editadas chegam ao seu email, com as 3 capas.</span></li>
+      <li><b>7 dias</b><span>Anúncio reescrito, site de reservas, ficha do Google, kit Instagram e cartão de avaliações.</span></li>
+      <li><b>30 dias</b><span>Revemos as estatísticas do anúncio consigo e afinamos o que for preciso.</span></li>
+    </ol>
+    <p class="small" style="margin-top:16px">Não vê o email? Procure em spam ou promoções. Dúvidas: hello.aspeto@gmail.com</p>
+    <div class="cta" style="justify-content:center"><a class="btn" href="#" id="home">Voltar ao início</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="band" style="padding-block:34px">
+  <div class="wrap"><div><b style="font:600 16px Unbounded,sans-serif">Aspeto Growth</b><p class="small">Um serviço Aspeto Design para alojamento local, guesthouses e imobiliárias.</p></div>
+  <p class="small">hello.aspeto@gmail.com · Instagram @aspeto.design</p></div>
+</footer>
+
+<script>
+{
+/* ===== Configuração: preencher antes de publicar ===== */
+const CONFIG={
+  stripe:{full:'',split:''},           // Payment Links da Stripe: 500 € e 250 € (prestação)
+  cloudinary:{cloud:'',preset:''},      // upload das fotos (upload preset "unsigned")
+  vagas:{mes:'dezembro',total:20,livres:20},  // atualize à mão: vagas que ainda tem este mês
+  maxMB:10,maxFotos:40
+};
+/* ===================================================== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const eur=v=>Math.round(v).toLocaleString('pt-PT')+' €';
+const knob='<span class="knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>';
+const cmp=(b,a,label)=>`<div class="cmp"><img src="${a}" alt="${esc(label)} depois" ><div class="bf"><img src="${b}" alt="${esc(label)} antes"></div><span class="tag l">Antes</span><span class="tag r">Depois</span><div class="beam">${knob}</div><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois: ${esc(label)}"></div>`;
+document.addEventListener('input',e=>{if(e.target.matches('.cmp input')){e.target.parentElement.style.setProperty('--p',e.target.value+'%');e.target.dataset.touched=1}});
+
+/* ---------- hero: varrimento ---------- */
+{const c=$('#heroCmp'),r=c.querySelector('input'),reads=[...$('#reads').children];
+ const set=v=>{c.style.setProperty('--p',v+'%');r.value=v;reads.forEach((s,i)=>s.classList.toggle('on',v<88-i*14))};
+ if(reduce){set(50)}else{let t0=null;const loop=t=>{if(r.dataset.touched){reads.forEach(s=>s.classList.add('on'));return}t0??=t;const k=((t-t0)/5200)%2,v=k<1?100-k*88:12+(k-1)*88;set(v);requestAnimationFrame(loop)};set(100);setTimeout(()=>requestAnimationFrame(loop),600)}}
+
+/* ---------- pesquisa ---------- */
+const LIST=[{i:'sala',t:'T1 com vista para a Ria',l:'Aveiro · ★ 4,8',p:'82 €'},{i:'exterior',you:1,t:'Casa com piscina',l:'Ílhavo · ★ 4,9',p:'140 €'},{i:'quarto',t:'Quarto com azulejos',l:'Aveiro · ★ 4,7',p:'64 €'},
+ {i:'cozinha',t:'Casa no centro histórico',l:'Porto · ★ 4,8',p:'95 €'},{i:'hero',t:'Villa frente ao mar',l:'Costa Nova · ★ 4,9',p:'210 €'},{i:'wc',t:'Estúdio boutique',l:'Barra · ★ 4,6',p:'78 €'}];
+$('#serp').innerHTML=LIST.map(x=>`<figure class="lst${x.you?' you':''}"><div class="ph"><img src="img/${x.i}${x.you?'-antes':''}.jpg" alt="" loading="lazy">${x.you?'<span class="yt">O seu anúncio</span>':''}</div><figcaption><b>${x.t}</b><span class="pr">${x.p} <span>noite</span></span><span>${x.l}</span></figcaption></figure>`).join('');
+const VB='Entre fotos luminosas, a sua casa parece mais escura, mais velha e mais pequena do que é. O olhar salta por cima.';
+const VA='Agora é o primeiro anúncio que se vê: céu azul, água limpa, cor real. É aqui que o hóspede clica.';
+function tg(a){$('#serp .you img').src=`img/exterior${a?'':'-antes'}.jpg`;$('#tgB').setAttribute('aria-pressed',!a);$('#tgA').setAttribute('aria-pressed',a);$('#verdict').textContent=a?VA:VB}
+$('#tgB').onclick=()=>tg(false);$('#tgA').onclick=()=>tg(true);tg(false);
+
+/* ---------- carrossel ---------- */
+const SC=[{i:'exterior',t:'Exterior e piscina',d:'Céu azul, água com a cor real, verticais direitas.'},{i:'quarto',t:'Quarto',d:'Luz quente e limpa, brancos verdadeiros, vista pela janela.'},{i:'cozinha',t:'Cozinha',d:'Azulejos com a cor certa, bancada luminosa, sem tom amarelo.'},{i:'wc',t:'Casa de banho',d:'Espaço mais amplo, cores neutras, sem sombras pesadas.'},{i:'sala',t:'Sala',d:'Vista da Ria recuperada, luz natural, linhas direitas.'}];
+const car=$('#car'),dots=$('#dots');
+car.innerHTML=SC.map(s=>`<figure class="slide">${cmp(`img/${s.i}-antes.jpg`,`img/${s.i}.jpg`,s.t)}<figcaption><b>${s.t}</b>${s.d}</figcaption></figure>`).join('');
+dots.innerHTML=SC.map(s=>`<button aria-label="${s.t}"><i></i></button>`).join('');
+let cur=0;const mark=()=>[...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===cur));
+const go=i=>{cur=(i+SC.length)%SC.length;car.scrollTo({left:car.children[cur].offsetLeft,behavior:reduce?'auto':'smooth'});mark()};
+dots.onclick=e=>{const b=e.target.closest('button');if(b)go([...dots.children].indexOf(b))};
+$('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>go(cur+1);
+car.addEventListener('scroll',()=>{const i=Math.round(car.scrollLeft/(car.clientWidth+18));if(i!==cur){cur=i;mark()}},{passive:true});
+$('#resultados').addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1)});mark();
+
+/* ---------- pack ---------- */
+const ITEMS=[
+ ['Fotos de nível profissional','Até 40 fotos editadas à mão: luz, cor, janelas com vista, céu azul, linhas direitas e o que distrai retirado.',239],
+ ['3 capas campeãs','Três versões da foto de capa feitas para parar o scroll, e qual usar no Airbnb, no Booking e no Google.',90],
+ ['Anúncio que vende','Título e descrição reescritos em português e inglês, com os pontos fortes que fazem o hóspede reservar.',150],
+ ['Site próprio de reservas diretas','Página com o nome do seu alojamento, galeria, mapa e WhatsApp. Quem volta reserva consigo, sem comissões.',800],
+ ['Ficha do Google Maps otimizada','Fotos novas, descrição e categorias certas para aparecer a quem procura alojamento na sua zona.',120],
+ ['Kit Instagram','12 publicações prontas com as fotos novas e legendas escritas.',150],
+ ['Cartão de avaliações com QR','Desenhado pela Aspeto Design, pronto a imprimir e deixar no quarto. Mais avaliações, melhor posição.',60,1],
+ ['Guia: fotos de telemóvel que vendem','Para as próximas fotos saírem bem à primeira.',39,1],
+ ['Revisão aos 30 dias','Vemos as estatísticas do seu anúncio consigo e afinamos capa e texto.',90,1]];
+let firstBonus=true;
+$('#items').innerHTML=ITEMS.map((x,i)=>{let h='';if(x[3]&&firstBonus){firstBonus=false;h='<p class="sub">Bónus incluídos</p>'}
+ return h+`<div class="it${x[3]?' bonus':''}"><span class="n">${i+1}</span><div><h3>${x[0]}</h3><p>${x[1]}</p></div><span class="v"><small>valor</small>${eur(x[2])}</span></div>`}).join('');
+const total=ITEMS.reduce((s,x)=>s+x[2],0);$('#sumVal').textContent=eur(total);
+const V=CONFIG.vagas;$('#seatTxt').textContent=`Vagas de ${V.mes}: ${V.livres} de ${V.total} disponíveis`;$('#seatBar').style.width=(V.livres/V.total*100)+'%';
+$('#seatTxt2').textContent=`Só aceitamos ${V.total} alojamentos por mês. Vagas de ${V.mes}: ${V.livres}.`;
+
+/* ---------- contas ---------- */
+function roi(){const p=+$('#rPrice').value,n=+$('#rNights').value,c=+$('#rCom').value,b=p*n,need=Math.ceil(500/b);
+ $('#oPrice').textContent=eur(p);$('#oNights').textContent=n+(n>1?' noites':' noite');$('#oCom').textContent=c+'%';
+ $('#oNeed').textContent=need+(need>1?' reservas':' reserva');$('#oBook').textContent=eur(b);$('#oYear').textContent='+'+eur(b*12);$('#oSave').textContent=eur(b*c/100)}
+['#rPrice','#rNights','#rCom'].forEach(s=>$(s).addEventListener('input',roi));roi();
+
+/* ---------- análise das fotos ---------- */
+const clamp=v=>Math.max(0,Math.min(100,Math.round(v)));
+function analyse(url){return new Promise((res,rej)=>{const img=new Image();img.onerror=rej;img.onload=()=>{try{
+ const W=200,H=Math.max(2,Math.round(W*img.naturalHeight/img.naturalWidth)),c=document.createElement('canvas');c.width=W;c.height=H;
+ const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(img,0,0,W,H);const d=x.getImageData(0,0,W,H).data,n=W*H,L=new Float32Array(n);
+ let sL=0,sL2=0,sS=0,hi=0,sR=0,sB=0;
+ for(let i=0,k=0;k<n;i+=4,k++){const r=d[i],g=d[i+1],b=d[i+2],l=.2126*r+.7152*g+.0722*b,mx=Math.max(r,g,b),mn=Math.min(r,g,b);L[k]=l;sL+=l;sL2+=l*l;sS+=mx?(mx-mn)/mx:0;if(l>250)hi++;sR+=r;sB+=b}
+ const mean=sL/n,sd=Math.sqrt(Math.max(0,sL2/n-mean*mean)),sat=sS/n,cast=(sR-sB)/n;
+ let a=0,a2=0,m=0;for(let y=1;y<H-1;y++)for(let xx=1;xx<W-1;xx++){const k=y*W+xx,v=4*L[k]-L[k-1]-L[k+1]-L[k-W]-L[k+W];a+=v;a2+=v*v;m++}
+ const lap=a2/m-(a/m)**2;
+ const sc={luz:clamp(100-Math.abs(mean-138)*1.15-hi/n*400),contraste:clamp(sd/58*100),cor:clamp(sat/.3*100),tom:clamp(100-Math.max(0,Math.abs(cast)-30)*2.5),nitidez:clamp((Math.log10(lap+1)-1.2)/1.4*100)};
+ sc.total=clamp(sc.luz*.32+sc.contraste*.18+sc.cor*.2+sc.tom*.12+sc.nitidez*.18);
+ const is=[];
+ if(mean<118)is.push('Foto escura: o espaço parece mais pequeno e fechado.');else if(mean>172)is.push('Foto demasiado clara: perde textura e detalhe.');
+ if(hi/n>.04)is.push('Zonas brancas queimadas, normalmente janelas sem vista.');
+ if(sc.contraste<60)is.push('Imagem lavada, sem profundidade.');
+ if(sc.cor<60)is.push('Cores sem vida: madeira, plantas e têxteis parecem cinzentos.');
+ if(cast>45)is.push('Tom amarelado da luz interior.');else if(cast<-25)is.push('Tom azulado e frio.');
+ if(sc.nitidez<55)is.push('Pouca nitidez: parece tirada à pressa.');
+ res({sc,is,mean,hi:hi/n,cast})}catch(e){rej(e)}};img.src=url})}
+const col=v=>v<50?'var(--err)':v<75?'var(--warn)':'var(--ok)';
+const LBL={luz:'Luz',contraste:'Contraste',cor:'Cor',tom:'Tom',nitidez:'Nitidez'};
+const scoreHTML=(sc,title)=>`<div class="sc"><div class="ring" style="--v:${sc.total};--c:${col(sc.total)}"><b>${sc.total}<small>de 100</small></b></div><div class="meters">${title?`<b style="font-size:15px">${title}</b>`:''}${Object.keys(LBL).map(k=>`<div class="m"><span>${LBL[k]}</span><span class="t"><i style="width:${sc[k]}%;background:${col(sc[k])}"></i></span><span>${sc[k]}</span></div>`).join('')}</div></div>`;
+const issuesHTML=(list,good)=>`<ul class="issues">${(list.length?list:[good]).map(t=>`<li style="--c:${list.length?'var(--err)':'var(--ok)'}">${t}</li>`).join('')}</ul>`;
+const ares=$('#ares');let aFile=null;
+ares.innerHTML=`<div class="sc" style="justify-content:center"><div class="ring"><b>?<small>de 100</small></b></div></div><p class="empty">A nota da sua foto aparece aqui, com o que está bem e o que corrigimos.</p>`;
+async function aRun(f){aFile=f;const url=URL.createObjectURL(f);ares.innerHTML='<p class="empty">A analisar a sua foto…</p>';
+ try{const r=await analyse(url);
+  ares.innerHTML=scoreHTML(r.sc,'Nota da sua foto de capa')+issuesHTML(r.is,'Boa base. Mesmo assim, corrigimos verticais, céu e detalhes que a máquina não mede.')+
+  `<p class="small" style="margin-top:14px">Análise automática de luz, contraste, cor, tom e nitidez. O enquadramento e o que distrai vemos nós na edição.</p><div class="cta"><button class="btn" id="afix" type="button">Corrigir esta e todas as outras</button></div>`;
+  $('#afix').onclick=()=>{add([aFile]);$('#comprar').scrollIntoView({behavior:reduce?'auto':'smooth'})};
+ }catch(e){ares.innerHTML='<p class="empty">Não conseguimos ler este formato no navegador (por exemplo HEIC). Experimente em JPG.</p>'}
+ URL.revokeObjectURL(url)}
+$('#afile').addEventListener('change',e=>{const f=e.target.files[0];if(f)aRun(f);e.target.value=''});
+function dz(el,fn){['dragenter','dragover'].forEach(t=>el.addEventListener(t,e=>{e.preventDefault();el.classList.add('on')}));['dragleave','drop'].forEach(t=>el.addEventListener(t,e=>{e.preventDefault();el.classList.remove('on')}));el.addEventListener('drop',e=>fn(e.dataTransfer.files))}
+dz($('#adrop'),fs=>{if(fs[0])aRun(fs[0])});
+
+/* ---------- encomenda ---------- */
+let files=[],order=null,nId=0;const MAXB=CONFIG.maxMB*1048576,MAX=CONFIG.maxFotos;
+const live=!!(CONFIG.cloudinary.cloud&&CONFIG.cloudinary.preset);
+function add(list){const bad=[];let over=false;
+ for(const f of list){if(!(f.type.startsWith('image/')||/\.(heic|heif)$/i.test(f.name))){bad.push(`${f.name} não é uma imagem`);continue}
+  if(f.size>MAXB){bad.push(`${f.name} tem mais de ${CONFIG.maxMB} MB`);continue}
+  if(files.some(x=>x.file.name===f.name&&x.file.size===f.size))continue;
+  if(files.length>=MAX){over=true;break}files.push({file:f,url:URL.createObjectURL(f),id:'f'+(++nId)})}
+ $('#fmsg').textContent=[bad.join(' · '),over?`Máximo de ${MAX} fotos. Para mais, escreva para hello.aspeto@gmail.com.`:''].filter(Boolean).join(' ');render()}
+function render(){
+ $('#thumbs').innerHTML=files.map(f=>`<li data-id="${f.id}"><img src="${f.url}" alt=""><button type="button" aria-label="Remover ${esc(f.file.name)}">×</button></li>`).join('');
+ $('#thumbs').querySelectorAll('img').forEach(img=>img.onerror=()=>{const d=document.createElement('div');d.className='ph';d.textContent=files.find(x=>x.id===img.parentElement.dataset.id)?.file.name||'';img.replaceWith(d)});
+ const c=files.length;$('#cnt').textContent=c?`${c} ${c===1?'foto escolhida':'fotos escolhidas'} de até ${MAX} incluídas no pack.`:'Ainda não escolheu fotos.';$('#go').disabled=!c}
+const fi=$('#file');fi.addEventListener('change',()=>{add(fi.files);fi.value=''});dz($('#drop'),add);
+$('#thumbs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.parentElement.dataset.id,f=files.find(x=>x.id===id);if(f)URL.revokeObjectURL(f.url);files=files.filter(x=>x.id!==id);render()});
+const steps=['sel','prog','pay'];
+function show(v){steps.forEach(s=>$('#v-'+s).hidden=s!==v);
+ document.querySelectorAll('#stepper li').forEach(li=>{const i=steps.indexOf(li.dataset.s),j=steps.indexOf(v);li.classList.toggle('done',i<j);if(i===j)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
+ $('#comprar').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
+$('#v-sel').addEventListener('submit',e=>{e.preventDefault();
+ const name=$('#fName').value.trim(),email=$('#fEmail').value.trim(),tel=$('#fTel').value.trim(),link=$('#fLink').value.trim();
+ const err=!name?['Escreva o nome do alojamento.','#fName']:!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)?['Escreva um email válido.','#fEmail']:tel.replace(/\D/g,'').length<9?['Escreva um número de WhatsApp válido.','#fTel']:null;
+ if(err){$('#emsg').textContent=err[0];$(err[1]).focus();return}$('#emsg').textContent='';
+ const d=new Date(),r=Math.random().toString(36).slice(2,6).toUpperCase();
+ order={id:`CC-${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}-${r}`,name,email,tel,link,plan:document.querySelector('[name=plan]:checked').value,count:files.length};run()});
+function uploadAll(onp){const tot=files.reduce((s,f)=>s+f.file.size,0);let done=0;const cv=s=>String(s).replace(/([|=])/g,'\\$1');
+ const ctx=`alojamento=${cv(order.name)}|email=${cv(order.email)}|whatsapp=${cv(order.tel)}|anuncio=${cv(order.link)}|plano=${order.plan}`;
+ return files.reduce((pr,f)=>pr.then(()=>new Promise((res,rej)=>{const fd=new FormData();fd.append('file',f.file);fd.append('upload_preset',CONFIG.cloudinary.preset);fd.append('folder','casa-cheia/'+order.id);fd.append('tags',order.id);fd.append('context',ctx);
+  const x=new XMLHttpRequest();x.open('POST',`https://api.cloudinary.com/v1_1/${encodeURIComponent(CONFIG.cloudinary.cloud)}/image/upload`);
+  x.upload.onprogress=e=>onp((done+e.loaded)/tot*100);x.onload=()=>{if(x.status<300){done+=f.file.size;onp(done/tot*100);res()}else rej()};x.onerror=rej;x.send(fd)})),Promise.resolve())}
+async function run(){show('prog');$('#perr').hidden=true;
+ $('#mini').innerHTML=files.slice(0,8).map(f=>`<img src="${f.url}" alt="" style="filter:saturate(.4) brightness(.7)">`).join('');$('#mini').querySelectorAll('img').forEach(i=>i.onerror=()=>i.remove());
+ const lis=[...$('#psteps').children],TH=[0,22,55,85];let up=live?0:100,failed=false;
+ if(live)uploadAll(p=>up=p).catch(()=>failed=true);
+ const an=Promise.all(files.map(f=>analyse(f.url).catch(()=>null)));
+ const T0=performance.now(),DUR=Math.min(9000,5000+files.length*120);
+ await new Promise(res=>{const tick=()=>{const v=Math.min((performance.now()-T0)/DUR*100,up,100);
+  $('#pfill').style.width=v+'%';$('#pct').textContent=Math.floor(v)+'%';$('#pbar').setAttribute('aria-valuenow',Math.floor(v));
+  lis.forEach((li,i)=>{const ok=v>=(TH[i+1]??100);li.className=ok?'ok':v>=TH[i]?'act':'';li.firstChild.textContent=ok?'✓':''});
+  $('#mini').querySelectorAll('img').forEach((im,i,a)=>{if(v>=(i+1)/a.length*100)im.style.filter='none'});
+  if(failed||v>=100)return res();requestAnimationFrame(tick)};tick()});
+ if(failed){$('#perr').hidden=false;return}
+ order.scores=(await an).filter(Boolean);setTimeout(pay,350)}
+function pay(){const S=order.scores,ps=$('#pscore');
+ if(S.length){const avg={};['total',...Object.keys(LBL)].forEach(k=>avg[k]=clamp(S.reduce((t,r)=>t+r.sc[k],0)/S.length));
+  const cnt=[[r=>r.mean<118,'está escura','estão escuras'],[r=>r.hi>.04,'tem janelas queimadas','têm janelas queimadas'],[r=>r.sc.cor<60,'tem cores sem vida','têm cores sem vida'],[r=>r.sc.nitidez<55,'está pouco nítida','estão pouco nítidas'],[r=>r.cast>45||r.cast<-25,'tem um tom amarelado ou frio','têm um tom amarelado ou frio']]
+   .map(([t,a,b])=>{const c=S.filter(t).length;return !c?'':S.length===1?`A sua foto ${a}.`:`${c} de ${S.length} fotos ${c===1?a:b}.`}).filter(Boolean);
+  const best=S.reduce((b,r,i)=>r.sc.total>S[b].sc.total?i:b,0);
+  ps.innerHTML=scoreHTML(avg,'Nota atual das suas fotos')+issuesHTML(cnt,'Boa base: vamos dar o acabamento que faz a diferença na pesquisa.')+
+   `<p class="small" style="margin-top:16px">A sua melhor candidata a capa é a foto ${best+1}. É por essa que começamos.</p>`;
+ }else ps.innerHTML='<p class="small">Recebemos as suas fotos. O diagnóstico completo segue por email.</p>';
+ const split=order.plan==='split',link=CONFIG.stripe[order.plan];
+ $('#rows').innerHTML=`<div><span>Alojamento</span><span>${esc(order.name)}</span></div><div><span>Fotos enviadas</span><span>${order.count}</span></div>
+  <div><span>Fotos prontas</span><span>em 48 horas</span></div><div><span>Pack completo</span><span>em 7 dias</span></div>
+  <div><span>Valor de tudo</span><span><s>${eur(total)}</s></span></div><div><span>Garantia</span><span>60 dias</span></div>
+  <div class="tot"><span>${split?'Hoje':'Total'}</span><span>${split?'250 €':'500 €'}</span></div>`;
+ const btn=$('#paybtn');btn.textContent=split?'Pagar 250 € e reservar a vaga':'Pagar 500 € e reservar a vaga';
+ btn.href=link?`${link}?client_reference_id=${encodeURIComponent(order.id)}&prefilled_email=${encodeURIComponent(order.email)}`:'#obrigado';
+ $('#demo').hidden=!!link;show('pay')}
+$('#paybtn').addEventListener('click',()=>{try{sessionStorage.setItem('casa-cheia',JSON.stringify({id:order.id,email:order.email,name:order.name}))}catch(e){}});
+$('#back').onclick=()=>show('sel');$('#back2').onclick=()=>show('sel');$('#retry').onclick=()=>run();
+
+/* ---------- obrigado ---------- */
+function route(){const ty=location.hash==='#obrigado';document.body.classList.toggle('ty',ty);
+ if(ty){let o=null;try{o=JSON.parse(sessionStorage.getItem('casa-cheia'))}catch(e){}
+  $('#tyText').textContent=o&&o.email?`A vaga de ${o.name} está reservada. Vamos enviar tudo para ${o.email}.`:'A sua vaga está reservada. Já estamos a trabalhar no seu alojamento.';
+  $('#tyRef').textContent=o&&o.id?`Referência: ${o.id}`:'';
+  files.forEach(f=>URL.revokeObjectURL(f.url));files=[];order=null;render();
+  steps.forEach(s=>$('#v-'+s).hidden=s!=='sel');scrollTo(0,0)}}
+$('#home').addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'',location.pathname+location.search);route();scrollTo(0,0)});
+addEventListener('hashchange',route);route();render();
+}
+</script>
+</body>
+</html>
