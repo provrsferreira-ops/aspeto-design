@@ -48,4 +48,4 @@ section[id]{scroll-margin-top:16px}
 .bf-done{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding:24px 0}
 .bf-check{width:56px;height:56px;border-radius:999px;background:#02332C;display:flex;align-items:center;justify-content:center}
 
-@media (max-width:640px){header img{height:38px !important}}
+@media (max-width:640px){header img{height:30px !important}}
