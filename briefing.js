@@ -11,7 +11,7 @@
       steps: [
         { key: 'sector', type: 'single', title: 'Que tipo de negócio tem?', hint: 'Escolha a opção mais próxima.', options: ['Hotel ou hotel boutique', 'Alojamento local', 'Turismo rural ou quinta', 'Passeios e experiências', 'Espaço de eventos ou casamentos', 'Restaurante ou bar', 'Outro'] },
         { key: 'size', type: 'single', title: 'Qual é a dimensão?', hint: 'Quartos, unidades ou capacidade aproximada.', options: ['1 a 5 unidades', '6 a 20', '21 a 60', 'Mais de 60', 'Não se aplica'] },
-        { key: 'phase', type: 'single', title: 'Em que fase está?', hint: 'Ajuda-nos a perceber o calendário.', options: ['Vou abrir em breve', 'Estou a remodelar ou a renovar a imagem', 'Já funciona e quero mais reservas diretas'] },
+        { key: 'phase', type: 'single', title: 'Em que fase está?', hint: 'Ajuda-nos a perceber o calendário.', options: ['Vou abrir em breve', 'Estou a fazer rebranding', 'Já funciona e quero mais reservas diretas'] },
         { key: 'needs', type: 'multi', title: 'Do que precisa?', hint: 'Pode escolher várias opções.', options: ['Nome e logótipo', 'Identidade visual completa', 'Site com reservas diretas', 'Menus, brochuras e sinalética', 'Conteúdo para redes sociais', 'Materiais de abertura ou evento', 'Ainda não sei'] },
         { key: 'about', type: 'about', title: 'Fale-nos do seu espaço', hint: 'Onde fica, que hóspedes recebe e o que o torna especial.' },
         { key: 'refs', type: 'refs', title: 'Site atual e referências', hint: 'Opcional. O seu site ou Instagram e espaços de que gosta.' },
@@ -32,7 +32,7 @@
       steps: [
         { key: 'sector', type: 'single', title: 'What kind of business is it?', hint: 'Pick the closest option.', options: ['Hotel or boutique hotel', 'Holiday rental', 'Rural stay or estate', 'Tours and experiences', 'Event or wedding venue', 'Restaurant or bar', 'Other'] },
         { key: 'size', type: 'single', title: 'How big is it?', hint: 'Rooms, units or approximate capacity.', options: ['1 to 5 units', '6 to 20', '21 to 60', 'More than 60', 'Doesn’t apply'] },
-        { key: 'phase', type: 'single', title: 'Where are you at?', hint: 'It helps us understand your timeline.', options: ['Opening soon', 'Renovating or refreshing the brand', 'Already open, want more direct bookings'] },
+        { key: 'phase', type: 'single', title: 'Where are you at?', hint: 'It helps us understand your timeline.', options: ['Opening soon', 'Rebranding', 'Already open, want more direct bookings'] },
         { key: 'needs', type: 'multi', title: 'What do you need?', hint: 'You can pick more than one.', options: ['Name and logo', 'Full visual identity', 'Website with direct bookings', 'Menus, brochures and signage', 'Social media content', 'Opening or event materials', 'Not sure yet'] },
         { key: 'about', type: 'about', title: 'Tell us about your place', hint: 'Where it is, who your guests are and what makes it special.' },
         { key: 'refs', type: 'refs', title: 'Current site and references', hint: 'Optional. Your website or Instagram and places you like.' },
