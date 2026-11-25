@@ -9,7 +9,7 @@
   function copy(locale) {
     const pt = {
       steps: [
-        { key: 'sector', type: 'single', title: 'Que tipo de negócio tem?', hint: 'Escolha a opção mais próxima.', options: ['Hotel ou boutique hotel', 'Alojamento local', 'Turismo rural ou quinta', 'Tours e experiências', 'Espaço de eventos ou casamentos', 'Restaurante ou bar', 'Outro'] },
+        { key: 'sector', type: 'single', title: 'Que tipo de negócio tem?', hint: 'Escolha a opção mais próxima.', options: ['Hotel ou hotel boutique', 'Alojamento local', 'Turismo rural ou quinta', 'Passeios e experiências', 'Espaço de eventos ou casamentos', 'Restaurante ou bar', 'Outro'] },
         { key: 'size', type: 'single', title: 'Qual é a dimensão?', hint: 'Quartos, unidades ou capacidade aproximada.', options: ['1 a 5 unidades', '6 a 20', '21 a 60', 'Mais de 60', 'Não se aplica'] },
         { key: 'phase', type: 'single', title: 'Em que fase está?', hint: 'Ajuda-nos a perceber o calendário.', options: ['Vou abrir em breve', 'Estou a remodelar ou a renovar a imagem', 'Já funciona e quero mais reservas diretas'] },
         { key: 'needs', type: 'multi', title: 'Do que precisa?', hint: 'Pode escolher várias opções.', options: ['Nome e logótipo', 'Identidade visual completa', 'Site com reservas diretas', 'Menus, brochuras e sinalética', 'Conteúdo para redes sociais', 'Materiais de abertura ou evento', 'Ainda não sei'] },
@@ -21,11 +21,11 @@
       ],
       of: 'de', step: 'Passo',
       aboutLabel: 'Sobre o espaço', aboutPh: 'Ex.: casa de 8 quartos no Douro, para casais que procuram vinho e sossego…',
-      refsLabel: 'Links (opcional)',
+      refsLabel: 'Ligações (opcional)',
       nameLabel: 'Nome', phoneLabel: 'WhatsApp (opcional)', prefLabel: 'Prefere ser contactado por:',
-      prefs: ['Email', 'WhatsApp', 'Videochamada'],
+      prefs: ['E-mail', 'WhatsApp', 'Videochamada'],
       back: 'Voltar', next: 'Continuar', send: 'Enviar pedido', timeNote: 'Cerca de 2 minutos',
-      errPick: 'Escolha uma opção para continuar.', errText: 'Escreva algumas palavras sobre o espaço para continuar.', errContact: 'Indique o seu nome e um email válido.',
+      errPick: 'Escolha uma opção para continuar.', errText: 'Escreva algumas palavras sobre o espaço para continuar.', errContact: 'Indique o seu nome e um e-mail válido.',
       doneTitle: 'Recebemos o seu pedido.', doneBody: 'Vamos ler o seu briefing e responder em 24 horas. Se preferir adiantar, marque já uma chamada de 20 minutos connosco.', call: 'Marcar chamada'
     };
     const en = {
@@ -92,7 +92,7 @@
       } else if (s.type === 'contact') {
         h += '<div class="bf-fields">' +
           '<label class="bf-label">' + esc(c.nameLabel) + '<input type="text" autocomplete="name" data-field="name" value="' + esc(st.name) + '"></label>' +
-          '<label class="bf-label">Email<input type="email" autocomplete="email" data-field="email" value="' + esc(st.email) + '"></label>' +
+          '<label class="bf-label">' + (locale === 'pt' ? 'E-mail' : 'Email') + '<input type="email" autocomplete="email" data-field="email" value="' + esc(st.email) + '"></label>' +
           '<label class="bf-label">' + esc(c.phoneLabel) + '<input type="tel" autocomplete="tel" data-field="phone" value="' + esc(st.phone) + '"></label></div>' +
           '<div class="bf-pref"><span class="bf-label" style="gap:0">' + esc(c.prefLabel) + '</span><div class="bf-pills">';
         c.prefs.forEach(function (label, i) { h += optBtn(label, st.pref === label, 'bf-pill', 'data-pref="' + i + '"'); });
