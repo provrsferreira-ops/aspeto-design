@@ -10,10 +10,25 @@ img{max-width:100%}
 summary{cursor:pointer}
 section[id]{scroll-margin-top:16px}
 @media (max-width:640px){
-  header nav{gap:14px !important}
-  header nav > a:not([href^="#briefing"]):not([href^="#brief"]){display:none}
-  section{padding-top:72px !important;padding-bottom:72px !important}
-  #topo,#top{padding-top:56px !important}
+  /* Cabeçalho numa só linha: logótipo à esquerda, PT/EN à direita */
+  header{flex-wrap:nowrap !important;padding:16px 24px !important}
+  header nav{gap:12px !important;flex-wrap:nowrap !important}
+  header nav > a{display:none !important}
+  /* Espaçamentos verticais mais curtos */
+  [style*="padding: 112px"],[style*="padding: 104px"],[style*="padding: 96px"],[style*="padding: 88px"]{padding-top:56px !important;padding-bottom:56px !important}
+  [style*="padding: 112px 32px"],[style*="padding: 104px 32px"],[style*="padding: 96px 32px"],[style*="padding: 88px 32px"]{padding-left:24px !important;padding-right:24px !important}
+  [style*="padding: 0 32px"]{padding-left:24px !important;padding-right:24px !important}
+  #topo,#top{padding-top:32px !important;padding-bottom:56px !important}
+  footer > div{padding-bottom:32px !important}
+  footer [style*="margin-top: 88px"]{margin-top:48px !important}
+  h2[style*="margin: 0 0 48px"],h2[style*="margin: 0 0 56px"],h2[style*="margin: 0 0 40px"]{margin-bottom:28px !important}
+  /* Botões do topo a toda a largura */
+  #topo a[href^="#"],#top a[href^="#"]{flex:1 1 100%;justify-content:center}
+  /* Legendas dos projetos sempre iguais */
+  article > div[style*="space-between"]{flex-direction:column !important;gap:2px !important}
+  /* Cartões com um pouco menos de margem interna */
+  .fx[style*="padding: 36px"]{padding:28px !important}
+  section[style*="background: #02332C"] > div{gap:36px !important}
 }
 
 /* Formulário */
