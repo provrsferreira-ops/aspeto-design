@@ -2,7 +2,7 @@
 (function () {
   // ===== CONFIGURAÇÃO =====
   // Coloque aqui o email que recebe os pedidos (via FormSubmit.co). Vazio = só mostra a confirmação.
-  var EMAIL = '';
+  var EMAIL = 'hello.aspeto@gmail.com';
   var CALL_URL = ''; // link do Calendly / Cal.com (vazio = sem botão de chamada)
   // ========================
 
