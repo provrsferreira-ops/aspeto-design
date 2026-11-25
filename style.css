@@ -49,3 +49,12 @@ section[id]{scroll-margin-top:16px}
 .bf-check{width:56px;height:56px;border-radius:999px;background:#02332C;display:flex;align-items:center;justify-content:center}
 
 @media (max-width:640px){header img{height:30px !important}}
+
+/* Efeito nos cartões: cresce e passa um brilho */
+.fx{position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
+.fx::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 47%,rgba(255,255,255,.12) 53%,transparent 70%);transform:translateX(-130%)}
+@media (hover:hover){
+.fx:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 24px 50px -26px rgba(2,51,44,.45);z-index:1}
+.fx:hover::after{transform:translateX(130%);transition:transform .9s ease}
+}
+@media (prefers-reduced-motion:reduce){.fx,.fx::after{transition:none!important}.fx:hover{transform:none}}
