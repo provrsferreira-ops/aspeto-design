@@ -27,8 +27,25 @@
         io.unobserve(el);
         setTimeout(function () { el.style.transitionDelay = ''; }, d + 900);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -5% 0px', threshold: 0 });
     targets.forEach(function (el) { io.observe(el); });
+
+    // Rede de segurança: se o browser não avisar a tempo (scroll rápido, browsers dentro de apps),
+    // mostra tudo o que já está no ecrã ou acima dele.
+    var ticking = false;
+    function sweep() {
+      ticking = false;
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      targets.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        if (el.getBoundingClientRect().top < h * 0.7) { el.classList.add('in'); io.unobserve(el); }
+      });
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(sweep); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', sweep);
+    setTimeout(sweep, 1200);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
