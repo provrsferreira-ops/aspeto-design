@@ -73,3 +73,10 @@ section[id]{scroll-margin-top:16px}
 .fx:hover::after{transform:translateX(130%);transition:transform .9s ease}
 }
 @media (prefers-reduced-motion:reduce){.fx,.fx::after{transition:none!important}.fx:hover{transform:none}}
+
+/* Aparecer ao fazer scroll */
+.rv-on .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
+.rv-on .rv.in{opacity:1;transform:none}
+@media (hover:hover){.rv-on .fx.rv.in:hover{transform:translateY(-4px) scale(1.03)}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
