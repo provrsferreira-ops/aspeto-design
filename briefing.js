@@ -3,7 +3,7 @@
   // ===== CONFIGURAÇÃO =====
   // Coloque aqui o email que recebe os pedidos (via FormSubmit.co). Vazio = só mostra a confirmação.
   var EMAIL = '';
-  var CALL_URL = 'https://calendly.com'; // trocar pelo link real do Calendly / Cal.com
+  var CALL_URL = ''; // link do Calendly / Cal.com (vazio = sem botão de chamada)
   // ========================
 
   function copy(locale) {
@@ -17,7 +17,7 @@
         { key: 'refs', type: 'refs', title: 'Site atual e referências', hint: 'Opcional. O seu site ou Instagram e espaços de que gosta.' },
         { key: 'deadline', type: 'single', title: 'Para quando precisa?', hint: 'Um prazo aproximado chega.', options: ['Abro em menos de 3 meses', 'Nos próximos 3 a 6 meses', 'Sem data definida'] },
         { key: 'budget', type: 'single', title: 'Qual é o orçamento aproximado?', hint: 'Serve só para lhe propormos a solução certa.', options: ['Até 1 500 €', '1 500 – 5 000 €', '5 000 – 15 000 €', 'Mais de 15 000 €', 'Ainda não sei'] },
-        { key: 'contact', type: 'contact', title: 'Como podemos falar consigo?', hint: 'Respondemos em [24 horas].' }
+        { key: 'contact', type: 'contact', title: 'Como podemos falar consigo?', hint: 'Respondemos em 24 horas.' }
       ],
       of: 'de', step: 'Passo',
       aboutLabel: 'Sobre o espaço', aboutPh: 'Ex.: casa de 8 quartos no Douro, para casais que procuram vinho e sossego…',
@@ -26,7 +26,7 @@
       prefs: ['Email', 'WhatsApp', 'Videochamada'],
       back: 'Voltar', next: 'Continuar', send: 'Enviar pedido', timeNote: 'Cerca de 2 minutos',
       errPick: 'Escolha uma opção para continuar.', errText: 'Escreva algumas palavras sobre o espaço para continuar.', errContact: 'Indique o seu nome e um email válido.',
-      doneTitle: 'Recebemos o seu pedido.', doneBody: 'Vamos ler o seu briefing e responder em [24 horas]. Se preferir adiantar, marque já uma chamada de 20 minutos connosco.', call: 'Marcar chamada'
+      doneTitle: 'Recebemos o seu pedido.', doneBody: 'Vamos ler o seu briefing e responder em 24 horas. Se preferir adiantar, marque já uma chamada de 20 minutos connosco.', call: 'Marcar chamada'
     };
     const en = {
       steps: [
@@ -38,7 +38,7 @@
         { key: 'refs', type: 'refs', title: 'Current site and references', hint: 'Optional. Your website or Instagram and places you like.' },
         { key: 'deadline', type: 'single', title: 'When do you need it?', hint: 'A rough timeline is fine.', options: ['Opening in under 3 months', 'In the next 3 to 6 months', 'No fixed date'] },
         { key: 'budget', type: 'single', title: 'What’s your approximate budget?', hint: 'It only helps us suggest the right option.', options: ['Up to €1,500', '€1,500 – €5,000', '€5,000 – €15,000', 'Over €15,000', 'Not sure yet'] },
-        { key: 'contact', type: 'contact', title: 'How can we reach you?', hint: 'We reply within [24 hours].' }
+        { key: 'contact', type: 'contact', title: 'How can we reach you?', hint: 'We reply within 24 hours.' }
       ],
       of: 'of', step: 'Step',
       aboutLabel: 'About your place', aboutPh: 'E.g. an 8-room house in the Douro Valley for couples looking for wine and quiet…',
@@ -47,7 +47,7 @@
       prefs: ['Email', 'WhatsApp', 'Video call'],
       back: 'Back', next: 'Continue', send: 'Send request', timeNote: 'About 2 minutes',
       errPick: 'Pick an option to continue.', errText: 'Write a few words about your place to continue.', errContact: 'Please enter your name and a valid email.',
-      doneTitle: 'We’ve got your request.', doneBody: 'We’ll read your brief and reply within [24 hours]. Want to move faster? Book a 20-minute call with us now.', call: 'Book a call'
+      doneTitle: 'We’ve got your request.', doneBody: 'We’ll read your brief and reply within 24 hours. Want to move faster? Book a 20-minute call with us now.', call: 'Book a call'
     };
     return locale === 'en' ? en : pt;
   }
@@ -69,8 +69,8 @@
       var h = '<div class="bf-card">';
       if (st.sent) {
         h += '<div class="bf-done"><div class="bf-check"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
-          '<h3 class="bf-title">' + esc(c.doneTitle) + '</h3><p class="bf-hint" style="max-width:520px">' + esc(c.doneBody) + '</p>' +
-          '<a class="bf-primary" href="' + esc(CALL_URL) + '" target="_blank" rel="noopener">' + esc(c.call) + '</a></div></div>';
+          '<h3 class="bf-title">' + esc(c.doneTitle) + '</h3><p class="bf-hint" style="max-width:520px">' + esc(CALL_URL ? c.doneBody : c.doneBody.split('. ')[0] + '.') + '</p>' +
+          (CALL_URL ? '<a class="bf-primary" href="' + esc(CALL_URL) + '" target="_blank" rel="noopener">' + esc(c.call) + '</a>' : '') + '</div></div>';
         root.innerHTML = h; return;
       }
       h += '<div class="bf-progress">';
